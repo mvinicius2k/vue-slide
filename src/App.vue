@@ -2,58 +2,66 @@
 import { ref } from 'vue';
 import ContentSlide from './components/ContentSlide.vue';
 import ContentSlideItem from './components/ContentSlideItem.vue'
-
+import CoolCounter from './components/CoolCounter.vue';
 
 const slideIndex = ref(0)
-
 
 </script>
 
 <template>
 
-  <div>
-    <ContentSlide :current-index="slideIndex">
-      <ContentSlideItem>
-        <p>P1</p>
-      </ContentSlideItem>
-      <ContentSlideItem>
-        <p>P2</p>
-      </ContentSlideItem>
-    </ContentSlide>
+	<!-- Contêiner centralizado do conteúdo -->
+	<div class="page-container">
 
-    <div>
-      <button @click="() => slideIndex--"> << </button>
-      <button @click="() => slideIndex++"> >> </button>
-    </div>
-  </div>
+		<!-- Contêiner dos slides -->
+		<div class="slide-container">
+			<ContentSlide :current-index="slideIndex">
+				<ContentSlideItem>
+					<CoolCounter />
+				</ContentSlideItem>
+				<ContentSlideItem>
+					<p> Voluptate consequat fugiat in est occaecat ex duis. </p>
+				</ContentSlideItem>
+				<ContentSlideItem>
+					<img src="/image.jfif"/>
+				</ContentSlideItem>
+			</ContentSlide>
+
+		</div>
+
+		<!-- Contêiner dos botões -->
+		<div>
+			<button @click="() => slideIndex--"> <<	</button>
+			{{ slideIndex }}
+			<button @click="() => slideIndex++"> >> </button>
+		</div>
+		
+	</div>
 
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+.slide-container {
+	width: 500px;
+	height: 350px;
+	border: 1px silver solid;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding: 10px;
+	margin: 5px;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.page-container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+img{
+	width: 100%;
 }
+
+
 </style>
