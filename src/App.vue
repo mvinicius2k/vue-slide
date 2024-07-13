@@ -23,7 +23,7 @@ const slideIndex = ref(0)
 					<p> Voluptate consequat fugiat in est occaecat ex duis. </p>
 				</ContentSlideItem>
 				<ContentSlideItem>
-					<img src="/image.jfif"/>
+					<img src="https://iili.io/dKHOyU7.jpg"/>
 				</ContentSlideItem>
 			</ContentSlide>
 

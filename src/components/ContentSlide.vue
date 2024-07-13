@@ -4,10 +4,10 @@ import { computed, useSlots } from 'vue';
 // O slide a mostrar é controlado pelos componentes pai
 const props = withDefaults(defineProps<{
 	currentIndex?: number
+	keepAlive?: boolean
 }>(),  {
 	currentIndex: 0
 })
-
 
 /**
  * Obtendo todos os slots passados para o slide
@@ -15,10 +15,11 @@ const props = withDefaults(defineProps<{
 const slots = useSlots()
 
 /**
- * Retorna o slide a renderizar
+ * @returns Slide a renderizar
  */
 const currentSlot = computed(() => {
 	let slot = slots.default!()[props.currentIndex]
+	
 	return slot
 })
 </script>
@@ -27,9 +28,12 @@ const currentSlot = computed(() => {
 <template>
 
 	<!-- Transição de entrada e saída para cada item, é algo visual e opcional -->
+	<!-- :key é necessário para identificar cada componente -->
 	<Transition name="slide" mode="out-in">
-		<!-- :key é necessário para identificar cada componente -->
-		<component :is="currentSlot" :key="currentIndex" />
+		<keep-alive include="CoolCounter">
+			<component :is="currentSlot" :key="currentIndex" /> 
+		</keep-alive>
+
 	</Transition>
 </template>
 
