@@ -19,21 +19,24 @@ const slots = useSlots()
  */
 const currentSlot = computed(() => {
 	let slot = slots.default!()[props.currentIndex]
-	
 	return slot
 })
 </script>
-
 
 <template>
 
 	<!-- Transição de entrada e saída para cada item, é algo visual e opcional -->
 	<!-- :key é necessário para identificar cada componente -->
 	<Transition name="slide" mode="out-in">
-		<keep-alive include="CoolCounter">
+		<template v-if="keepAlive">
+			<!-- KeepAlive para segurar os valores do componente -->
+			<KeepAlive>
+				<component :is="currentSlot" :key="currentIndex" /> 
+			</KeepAlive>
+		</template>
+		<template v-else>
 			<component :is="currentSlot" :key="currentIndex" /> 
-		</keep-alive>
-
+		</template>
 	</Transition>
 </template>
 

@@ -17,13 +17,13 @@ const slideIndex = ref(0)
 		<div class="slide-container">
 			<ContentSlide :current-index="slideIndex">
 				<ContentSlideItem>
-					<CoolCounter />
+					<CoolCounter/>
 				</ContentSlideItem>
 				<ContentSlideItem>
 					<p> Voluptate consequat fugiat in est occaecat ex duis. </p>
 				</ContentSlideItem>
 				<ContentSlideItem>
-					<img src="https://iili.io/dKHOyU7.jpg"/>
+					<img src="/ra.jpg"/>
 				</ContentSlideItem>
 			</ContentSlide>
 
